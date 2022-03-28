@@ -1,6 +1,6 @@
 {
   "name": "tabs-react-component",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "React tabs component for organizing content into separate views where only one view can be visible at a time.",
   "author": "josealejandro2928",
   "license": "MIT",

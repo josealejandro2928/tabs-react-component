@@ -21,8 +21,8 @@ yarn add tabs-react-component
 
 ## Usage
 
-The **react-basic-stepper** provide a two component to recreate the diferent views by dividing content into different tabs.
-You have **TabContainer** that is the wrapper **TabItem** components.
+The **tabs-react-component** provide a two component to recreate the diferent views by dividing content into different tabs.
+You have **TabContainer** that is the wrapper of **TabItem** components.
 **You must import the styles of these components**
 
 ```tsx
@@ -37,15 +37,15 @@ import TabContainer, { TabItem } from 'tabs-react-component';
 import 'react-basic-stepper/dist/index.css';
 ...
 <TabContainer color='#3949ab' borderLine >
-      <TabItem name='tab1'>
-        <h3>Content1</h3>
-      </TabItem>
-      <TabItem name='tab2'>
-        <h3>Content2</h3>
-      </TabItem>
-      <TabItem name='tab3'>
-        <h2>Content3</h2>
-      </TabItem>
+    <TabItem name='tab1'>
+      <h3>Content1</h3>
+    </TabItem>
+    <TabItem name='tab2'>
+      <h3>Content2</h3>
+    </TabItem>
+    <TabItem name='tab3'>
+      <h2>Content3</h2>
+    </TabItem>
 </TabContainer>
 ```
 
@@ -59,16 +59,16 @@ import TabContainer, { TabItem } from 'tabs-react-component';
 import 'react-basic-stepper/dist/index.css';
 ...
 <TabContainer indicatorStyle="button" color='#1976d2' backgroundColor='#323232' fontColor='#fff'>
-      <TabItem icon={<i style={{ marginRight: '4px' }} className="fa-solid fa-house"></i>} name='home'>
-        <h3>Content1</h3>
-      </TabItem>
-      <TabItem icon={<i style={{ marginRight: '4px' }} className="fa-solid fa-gear"></i>} name='settings'>
-        <h3>Content2</h3>
-      </TabItem>
+  <TabItem icon={<i style={{ marginRight: '4px' }} className="fa-solid fa-house"></i>} name='home'>
+    <h3>Content1</h3>
+  </TabItem>
+  <TabItem icon={<i style={{ marginRight: '4px' }} className="fa-solid fa-gear"></i>} name='settings'>
+    <h3>Content2</h3>
+  </TabItem>
 
-      <TabItem icon={<i style={{ marginRight: '4px' }} className="fa-solid fa-photo-film"></i>} name='images'>
-        <h2>Content3</h2>
-      </TabItem>
+  <TabItem icon={<i style={{ marginRight: '4px' }} className="fa-solid fa-photo-film"></i>} name='images'>
+    <h2>Content3</h2>
+  </TabItem>
 </TabContainer>
 ```
 
@@ -77,28 +77,30 @@ import 'react-basic-stepper/dist/index.css';
 ### 2. Lazy Loading, initial active tab, different transition speed and a disabled tab
 
 ```tsx
- <TabContainer lazy activeIndex={1} transitionMs={750} color='#3949ab' borderLine >
-      <TabItem name='tab1'>
-        <div style={{ padding: '1rem' }}>
-          <iframe width="800" height="400" src="https://www.youtube.com/embed/MNX7HgcWqHc" title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-        </div>
-      </TabItem>
-      <TabItem name='tab2'>
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur, doloremque itaque ipsam ducimus sunt minus,
-          nemo veniam error, neque corporis architecto in laudantium unde! Assumenda consequuntur eos magnam asperiores? Animi!
-        </p>
-      </TabItem>
-      <TabItem name='tab3' >
-        <h2>Content3</h2>
-        <img alt='example' src="/full.jpg" width={800} />
-      </TabItem>
-      <TabItem name='tab4' disabled >
-        <h2>Content3</h2>
-        <img alt='example' src="/full.jpg" width={800} />
-      </TabItem>
-    </TabContainer>
+<TabContainer lazy activeIndex={1} transitionMs={750} color='#3949ab' borderLine >
+  <TabItem name='tab1'>
+    <div style={{ padding: '1rem' }}>
+      <iframe width="800" height="400" src="https://www.youtube.com/embed/MNX7HgcWqHc" title="YouTube video player"
+         allow="accelerometer; autoplay" allowFullScreen></iframe>
+    </div>
+  </TabItem>
+  <TabItem name='tab2'>
+    <p>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur,
+       doloremque itaque ipsam ducimus sunt minus,
+      nemo veniam error, neque corporis architecto in laudantium unde!
+      Assumenda consequuntur eos magnam asperiores? Animi!
+    </p>
+  </TabItem>
+  <TabItem name='tab3' >
+    <h2>Content3</h2>
+    <img alt='example' src="/full.jpg" width={800} />
+  </TabItem>
+  <TabItem name='tab4' disabled >
+    <h2>Content3</h2>
+    <img alt='big' src="/full-2.jpg" width={800} />
+  </TabItem>
+</TabContainer>
 ```
 
 ![1](https://tabs-react-component.surge.sh/images/ex-3.png)
