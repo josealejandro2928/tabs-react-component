@@ -71,11 +71,16 @@ const TabContainer = ({
   }
 
   function checkChildrens(data: any[]) {
-    data.map((el: any) => {
-      if (!el.props.name)
-        throw new Error('Inside of TabContainer component only can be rendered TabItem component, and its need a name prop')
-      return true;
-    })
+    try {
+      data.map((el: any) => {
+        if (!el.props.name)
+          throw new Error('Inside of TabContainer component only can be rendered TabItem component, and its need a name prop')
+        return true;
+      })
+    } catch (e) {
+      throw new Error("The TabContainer Component must has a TabItem as child component");
+    }
+
   }
 
   const tabsItems = children instanceof Array ? children : [children];
