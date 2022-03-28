@@ -16,12 +16,12 @@ export interface TabContainerProp {
 }
 
 interface TabHeader {
-  active: boolean;
   label: string;
   icon?: JSX.Element | string | null | undefined;
+  disabled?: boolean
 }
 
-const TabContainer = ({
+const TabContainer = memo(({
   activeIndex = 0,
   children,
   backgroundColor = 'inherit',
@@ -40,19 +40,17 @@ const TabContainer = ({
   useEffect(() => {
     const tabsItems = children instanceof Array ? children : [children];
     checkChildrens(tabsItems);
-    const tabs = tabsItems.map(el => ({ active: false, label: el.props.name, icon: el.props.icon }))
+    const tabs = tabsItems.map(el => ({ label: el.props.name, icon: el.props.icon, disabled: el.props.disabled }))
     if (activeIndex > tabs.length - 1 || activeIndex < 0)
       throw new Error(`Invalid range for activeIndex ${activeIndex}`);
-    tabs[activeIndex].active = true;
     setHeader(tabs);
   }, [children])
 
   useEffect(() => {
-    if (header && header.length) {
-      onActivateTab(activeIndex);
-      if (activeIndex > header.length - 1 || activeIndex < 0)
-        throw new Error(`Invalid range for activeIndex ${activeIndex}`);
-    }
+    const tabsItems = children instanceof Array ? children : [children];
+    if (activeIndex > tabsItems.length - 1 || activeIndex < 0)
+      throw new Error(`Invalid range for activeIndex ${activeIndex}`);
+    setActiveTab(tabsItems[activeIndex]?.props?.disabled ? 0 : activeIndex);
   }, [activeIndex])
 
   useEffect(() => {
@@ -60,15 +58,6 @@ const TabContainer = ({
       onTabChange(activeTab);
     }
   }, [activeTab])
-
-  function onActivateTab(itemIndex: number) {
-    const tabs = header.map((el, index) => {
-      el.active = itemIndex === index ? true : false;
-      return el;
-    })
-    setHeader(tabs);
-    setActiveTab(itemIndex)
-  }
 
   function checkChildrens(data: any[]) {
     try {
@@ -88,15 +77,20 @@ const TabContainer = ({
   return <div ref={tabContainerRef} className="tab-pp">
     <div className="header" style={{ backgroundColor: backgroundColor, borderBottom: borderLine ? '1px solid rgba(0,0,0,.2)' : 'undet' }}>
       {header.map((el, index) => (
-        <div onClick={() => onActivateTab(index)} key={el.label}
+        <button onClick={() => {
+          if (el.disabled) return;
+          setActiveTab(index)
+        }} key={el.label}
           style={{
-            color: el.active && (indicatorStyle === 'simple' || indicatorStyle === 'bottomLine') ? color : 'inherit',
-            backgroundColor: el.active && (indicatorStyle === 'button') ? color : 'inherit',
+            color: index == activeTab && (indicatorStyle === 'simple' || indicatorStyle === 'bottomLine') ? color : 'inherit',
+            backgroundColor: index == activeTab && (indicatorStyle === 'button') ? color : 'inherit',
           }}
-          className={el.active ? `itemlabel ${indicatorStyle}` : 'itemlabel'} >
+          className={index == activeTab ? `itemlabel ${indicatorStyle}` : 'itemlabel'}
+          disabled={el.disabled}
+        >
           {el.icon} {el.label}
           {indicatorStyle === 'bottomLine' && (<div style={{ backgroundColor: color }}></div>)}
-        </div>
+        </button>
       ))}
     </div>
     <div className="body">
@@ -137,12 +131,13 @@ const TabContainer = ({
     </div>
 
   </div>
-}
+})
 
-export const TabItem = memo(({ name, children, icon = null, type = 'TabItem' }:
+export const TabItem = memo(({ name, children, icon = null, type = 'TabItem', disabled = false }:
   {
     name: string;
     children: ReactNode, icon?: JSX.Element | string | null | undefined;
+    disabled?: boolean
     type?: string
   }) => {
   return <div>
@@ -150,5 +145,4 @@ export const TabItem = memo(({ name, children, icon = null, type = 'TabItem' }:
   </div>
 })
 
-
-export default memo(TabContainer)
+export default TabContainer

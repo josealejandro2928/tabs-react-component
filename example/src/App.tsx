@@ -10,9 +10,17 @@ const App = () => {
   const [newTab, setNewTab] = useState({ title: '', content: '' })
 
   return <div className='container'>
+    <h1 style={{ textAlign: 'center' }}>tabs-react-component</h1>
+    <p style={{ textAlign: 'center' }}>
+      <img src="images/tab-initial.png" alt="1" />
+    </p>
+
     <h2>
       1- Basic Usage
     </h2>
+    <p>
+      <img src="images/tab1.png" alt="1" style={{ width: '100%' }} />
+    </p>
     <TabContainer color='#3949ab' borderLine >
       <TabItem name='tab1'>
         <h3>Content1</h3>
@@ -30,9 +38,13 @@ const App = () => {
           ipsa expedita! Maxime odio tempore suscipit. Nemo mollitia nam atque vel!</p>
       </TabItem>
     </TabContainer>
+
     <h2>
       2- Changing header style
     </h2>
+    <p>
+      <img src="images/tab2.png" alt="" style={{ width: '100%' }} />
+    </p>
     <TabContainer indicatorStyle="button" color='#66bb6a' backgroundColor='#eeeeee'>
       <TabItem name='tab1'>
         <h3>Content1</h3>
@@ -52,8 +64,11 @@ const App = () => {
     </TabContainer>
 
     <h2>
-      3- Lazy Loading, initial active tab and different transition speed
+      3- Lazy Loading, initial active tab, different transition speed and a disabled tab
     </h2>
+    <p>
+      <img src="images/tab3.png" alt="" style={{ width: '100%' }} />
+    </p>
     <TabContainer lazy activeIndex={1} transitionMs={750} color='#3949ab' borderLine >
       <TabItem name='tab1'>
         <div style={{ padding: '1rem' }}>
@@ -69,15 +84,22 @@ const App = () => {
         </p>
 
       </TabItem>
-      <TabItem name='tab3'>
+      <TabItem name='tab3' >
         <h2>Content3</h2>
-        <img src="/full.jpg" width={800} />
+        <img alt='example' src="/full.jpg" width={800} />
+      </TabItem>
+      <TabItem name='tab4' disabled >
+        <h2>Content3</h2>
+        <img alt='example' src="/full.jpg" width={800} />
       </TabItem>
     </TabContainer>
 
     <h2>
       4 - Cascade Usage
     </h2>
+    <p>
+      <img src="images/tab4.png" alt="" style={{ width: '100%' }} />
+    </p>
     <TabContainer color='#1e88e5' borderLine >
       <TabItem name='tab1'>
         <div style={{ padding: '1rem' }}>
@@ -95,7 +117,6 @@ const App = () => {
               <h3>Sub content 4</h3>
             </TabItem>
           </TabContainer>
-
         </div>
 
       </TabItem>
@@ -128,12 +149,14 @@ const App = () => {
           Lorem, ipsum dolor sit amet consectetur ....
         </h3>
       </TabItem>
-
     </TabContainer>
 
     <h2>
       5 - Dynamic Usage
     </h2>
+    <p>
+      <img src="images/tab5.png" alt="" style={{ width: '100%' }} />
+    </p>
     <TabContainer color='#3949ab' borderLine >
       {tabsDynamic.map((el, index) => (
         <TabItem key={index} name={el.title}>
@@ -142,6 +165,7 @@ const App = () => {
           </div>
         </TabItem>))}
     </TabContainer>
+
     <div className='form'>
       <h3>Create a new tab</h3>
       <input value={newTab.title} onChange={(e) => { setNewTab({ ...newTab, title: e.target.value }) }} type="text" placeholder='Name of the new tab' />
