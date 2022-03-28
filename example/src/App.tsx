@@ -45,21 +45,16 @@ const App = () => {
     <p>
       <img src="images/tab2.png" alt="" style={{ width: '100%' }} />
     </p>
-    <TabContainer indicatorStyle="button" color='#66bb6a' backgroundColor='#eeeeee'>
-      <TabItem name='tab1'>
+    <TabContainer indicatorStyle="button" color='#1976d2' backgroundColor='#323232' fontColor='#fff'>
+      <TabItem icon={<i style={{ marginRight: '4px' }} className="fa-solid fa-house"></i>} name='home'>
         <h3>Content1</h3>
       </TabItem>
-      <TabItem name='tab2'>
+      <TabItem icon={<i style={{ marginRight: '4px' }} className="fa-solid fa-gear"></i>} name='settings'>
         <h3>Content2</h3>
       </TabItem>
-      <TabItem name='tab3'>
+
+      <TabItem icon={<i style={{ marginRight: '4px' }} className="fa-solid fa-photo-film"></i>} name='images'>
         <h2>Content3</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe eum
-          officia voluptates ipsum exercitationem blanditiis repudiandae ullam, quos beatae,
-          ipsa expedita! Maxime odio tempore suscipit. Nemo mollitia nam atque vel!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe eum
-          officia voluptates ipsum exercitationem blanditiis repudiandae ullam, quos beatae,
-          ipsa expedita! Maxime odio tempore suscipit. Nemo mollitia nam atque vel!</p>
       </TabItem>
     </TabContainer>
 

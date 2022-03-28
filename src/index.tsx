@@ -13,6 +13,7 @@ export interface TabContainerProp {
   lazy?: boolean;
   transitionMs?: number;
   borderLine?: boolean;
+  fontColor?: string;
 }
 
 interface TabHeader {
@@ -30,6 +31,7 @@ const TabContainer = memo(({
   onTabChange = (index: number) => { },
   transitionMs = 375,
   borderLine = false,
+  fontColor = 'inherit',
   lazy = false }:
   TabContainerProp) => {
 
@@ -82,10 +84,10 @@ const TabContainer = memo(({
           setActiveTab(index)
         }} key={el.label}
           style={{
-            color: index == activeTab && (indicatorStyle === 'simple' || indicatorStyle === 'bottomLine') ? color : 'inherit',
+            color: index == activeTab && (indicatorStyle === 'simple' || indicatorStyle === 'bottomLine') ? color : fontColor,
             backgroundColor: index == activeTab && (indicatorStyle === 'button') ? color : 'inherit',
           }}
-          className={index == activeTab ? `itemlabel ${indicatorStyle}` : 'itemlabel'}
+          className={index == activeTab ? `itemlabel ${indicatorStyle} active` : 'itemlabel'}
           disabled={el.disabled}
         >
           {el.icon} {el.label}
