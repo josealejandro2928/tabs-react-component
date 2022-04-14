@@ -34,7 +34,7 @@ import 'tabs-react-component/dist/index.css';
 ```tsx
 ...
 import TabContainer, { TabItem } from 'tabs-react-component';
-import 'react-basic-stepper/dist/index.css';
+import 'tabs-react-component/dist/index.css'
 ...
 <TabContainer color='#3949ab' borderLine >
     <TabItem name='tab1'>
@@ -56,7 +56,7 @@ You can set edit the header changing the backgroundColor, color, active-label st
 ```tsx
 ...
 import TabContainer, { TabItem } from 'tabs-react-component';
-import 'react-basic-stepper/dist/index.css';
+import 'tabs-react-component/dist/index.css'
 ...
 <TabContainer indicatorStyle="button" color='#1976d2' backgroundColor='#323232' fontColor='#fff'>
   <TabItem icon={<i style={{ marginRight: '4px' }} className="fa-solid fa-house"></i>} name='home'>
